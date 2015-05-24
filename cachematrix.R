@@ -2,11 +2,10 @@
 ## Assumptions: the given matrix will always be invertible
 
 ## Usage
-## x <- makeCacheMatrix(matrix)
 ## cacheSolve(x)
 
-## Caches a matrix
 
+## Caches a matrix and its inverse
 makeCacheMatrix <- function(x = matrix()) {
      m <- NULL
      
@@ -18,15 +17,14 @@ makeCacheMatrix <- function(x = matrix()) {
      setinverse <- function(solve) m <<- solve
      getinverse <- function() m
      list( set = set, get = get,
-          setinverse = setinverse,
-          getinverse = getinverse)
+           setinverse = setinverse,
+           getinverse = getinverse)
 }
 
 
 ## If the inverse has already been calculated, retrieve it from the cache
-## created by the function "makeCacheMatrix". Otherwise, calculates the inverse
-## and caches it alongside the original matrix
-
+## created by the function "makeCacheMatrix". Otherwise, cache the matrix and
+## calculate the inverse
 cacheSolve <- function(x, ...) {
      ## Return a matrix that is the inverse of 'x'
      m <- x$getinverse()
